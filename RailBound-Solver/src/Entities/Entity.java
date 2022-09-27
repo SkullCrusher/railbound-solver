@@ -1,16 +1,21 @@
+package Entities;
+
 import java.awt.*;
 
 /**
- * # Entity
+ * # Entities.Entity
  * Handles objects that can move (train carts and the pusher cart).
  **/
 public class Entity {
 
+    int x = -1;
+    int y = -1;
+
     // The location that the entity starts.
-    Point startPos = new Point(-1, -1);
+    // Point startPos = new Point(-1, -1);
 
     // Where the entity currently is going.
-    Point pos = new Point(-1, -1);
+    // Point pos = new Point(-1, -1);
 
     // The number of the cart (to check the order).
     int trainNumber = -1;
@@ -27,8 +32,10 @@ public class Entity {
         return 0;
     }
 
-    Entity(Point start, int trainNumber, int direction){
-        this.startPos = start;
+    Entity(int x, int y, int trainNumber, int direction){
+        // this.startPos = start;
+        this.x = x;
+        this.y = y;
         this.trainNumber = trainNumber;
         this.direction = direction;
     }

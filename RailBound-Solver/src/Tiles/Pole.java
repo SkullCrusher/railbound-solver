@@ -14,4 +14,10 @@ public class Pole implements Tile {
         return new Point(0, 0);
     }
 
+    @Override
+    public int getType(){
+        return 0;
+    }
+
+
 }

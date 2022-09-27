@@ -4,14 +4,21 @@ import java.awt.*;
 
 public class Track implements Tile {
 
-    /*
-    * The
-    **/
+    Point position;
+
     int origination = -1;
 
+    boolean isExit = false;
 
-    Track(int origination) {
+    public Track(Point pos, int origination, boolean isExit) {
+        this.position = pos;
         this.origination = origination;
+        this.isExit = isExit;
+    }
+
+    @Override
+    public int getType(){
+        return origination;
     }
 
     /*
