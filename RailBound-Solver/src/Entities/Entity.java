@@ -1,6 +1,9 @@
 package Entities;
 
+import Tiles.Tile;
+
 import java.awt.*;
+import java.util.HashMap;
 
 /**
  * # Entities.Entity
@@ -8,14 +11,11 @@ import java.awt.*;
  **/
 public class Entity {
 
-    int x = -1;
-    int y = -1;
-
     // The location that the entity starts.
-    // Point startPos = new Point(-1, -1);
+    Point startPos;
 
     // Where the entity currently is going.
-    // Point pos = new Point(-1, -1);
+    Point pos;
 
     // The number of the cart (to check the order).
     int trainNumber = -1;
@@ -23,21 +23,47 @@ public class Entity {
     // Direction: the direction the cart is attempting to move
     // 0: right, 1: down, 2: left, 3: up
     int direction = -1;
+    int startDirection = -1;
 
     // If we shouldn't process it anymore.
     boolean completed = false;
 
-    // Do the next move for the entity.
-    int doNextMove(){
-        return 0;
-    }
-
     Entity(int x, int y, int trainNumber, int direction){
-        // this.startPos = start;
-        this.x = x;
-        this.y = y;
+
+        System.out.println(x);
+        System.out.println(y);
+
+        this.startPos = new Point(x, y);
+        this.pos = new Point(x, y);
         this.trainNumber = trainNumber;
         this.direction = direction;
+        this.startDirection = direction;
     }
 
+    // Do the next move for the entity.
+    public int doNextMove(HashMap<Point, Tile> tiles, Entity[] entities){
+
+        // Stop processing if it got to the exit.
+        if(this.completed) {
+            return 0;
+        }
+
+        // System.out.println(tiles);
+        // Tile currentTile = tiles.get(this.pos);
+        // System.out.println(currentTile);
+
+        System.out.println(this.pos);
+
+        return -1;
+    }
+
+    public void reset(){
+        this.completed = false;
+        this.pos = this.startPos;
+        this.direction = this.startDirection;
+    }
+
+    public int getTrainNumber(){
+        return this.trainNumber;
+    }
 }

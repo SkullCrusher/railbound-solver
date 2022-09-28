@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         // Debugging.
-        String path = "E:\\Source\\railbound-solver\\RailBound-Solver\\Example\\w-1-15.json";
+        String path = "E:\\Source\\railbound-solver\\RailBound-Solver\\Example\\w-1-15-solved.json";
 
         // Create a new solver.
         var tmp = new DFSSolver();
@@ -21,7 +21,6 @@ public class Main {
         // Attempt to solve the problem.
         tmp.solve();
 
-        System.out.println("Whats up!");
         System.out.println("Hello world!");
     }
 }

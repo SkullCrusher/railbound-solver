@@ -1,0 +1,150 @@
+{
+  "mapX": 6,
+  "mapY": 4,
+  "availableTrack": 8,
+  "carts": [
+    {
+      "direction": 0,
+      "trainNumber": 3,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "direction": 2,
+      "trainNumber": 2,
+      "x": 5,
+      "y": 0
+    },
+    {
+      "direction": 0,
+      "trainNumber": 1,
+      "x": 0,
+      "y": 3
+    }
+  ],
+  "track": [
+    {
+      "variation": 1,
+      "x": 0,
+      "y": 0,
+      "isExit": false
+    },
+    {
+      "variation": 1,
+      "x": 1,
+      "y": 0,
+      "isExit": false
+    },
+    {
+      "variation": 5,
+      "x": 2,
+      "y": 0,
+      "isExit": false
+    },
+    {
+      "variation": 6,
+      "x": 3,
+      "y": 0,
+      "isExit": false
+    },
+    {
+      "variation": 1,
+      "x": 4,
+      "y": 0,
+      "isExit": false
+    },
+    {
+      "variation": 1,
+      "x": 5,
+      "y": 0,
+      "isExit": false
+    },
+
+    {
+      "variation": 6,
+      "x": 1,
+      "y": 1,
+      "isExit": false
+    },
+    {
+      "variation": 3,
+      "x": 2,
+      "y": 1,
+      "isExit": false
+    },
+    {
+      "variation": 4,
+      "x": 3,
+      "y": 1,
+      "isExit": false
+    },
+    {
+      "variation": 5,
+      "x": 4,
+      "y": 1,
+      "isExit": false
+    },
+
+    {
+      "variation": 4,
+      "x": 1,
+      "y": 2,
+      "isExit": false
+    },
+    {
+      "variation": 5,
+      "x": 2,
+      "y": 2,
+      "isExit": false
+    },
+    {
+      "variation": 6,
+      "x": 3,
+      "y": 2,
+      "isExit": false
+    },
+    {
+      "variation": 2,
+      "x": 4,
+      "y": 2,
+      "isExit": false
+    },
+
+    {
+      "variation": 1,
+      "x": 0,
+      "y": 3,
+      "isExit": false
+    },
+    {
+      "variation": 1,
+      "x": 1,
+      "y": 3,
+      "isExit": false
+    },
+    {
+      "variation": 7,
+      "x": 2,
+      "y": 3,
+      "isExit": false
+    },
+    {
+      "variation": 7,
+      "x": 3,
+      "y": 3,
+      "isExit": false
+    },
+    {
+      "variation": 1,
+      "x": 4,
+      "y": 3,
+      "isExit": false
+    },
+    {
+      "variation": 1,
+      "x": 5,
+      "y": 3,
+      "isExit": true
+    }
+  ]
+}
