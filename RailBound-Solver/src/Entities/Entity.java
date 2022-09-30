@@ -28,11 +28,7 @@ public class Entity {
     // If we shouldn't process it anymore.
     boolean completed = false;
 
-    Entity(int x, int y, int trainNumber, int direction){
-
-        System.out.println(x);
-        System.out.println(y);
-
+    public Entity(int x, int y, int trainNumber, int direction){
         this.startPos = new Point(x, y);
         this.pos = new Point(x, y);
         this.trainNumber = trainNumber;
@@ -48,11 +44,15 @@ public class Entity {
             return 0;
         }
 
-        // System.out.println(tiles);
-        // Tile currentTile = tiles.get(this.pos);
-        // System.out.println(currentTile);
+        // System.out.println("-zzz");
 
-        System.out.println(this.pos);
+        // System.out.println(tiles);
+        Tile currentTile = tiles.get(this.pos);
+
+        // System.out.println(currentTile);
+        // System.out.println(this.pos);
+
+        // System.out.println("-zzz");
 
         return -1;
     }
@@ -66,4 +66,6 @@ public class Entity {
     public int getTrainNumber(){
         return this.trainNumber;
     }
+
+    public Point getPos() { return this.pos; }
 }

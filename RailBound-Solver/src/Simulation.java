@@ -1,7 +1,7 @@
 import Configuration.ConfigFile;
+import Configuration.jsonEntity;
 import Entities.Entity;
 import Tiles.Tile;
-import Tiles.Track;
 import com.google.gson.Gson;
 import java.awt.*;
 import java.io.IOException;
@@ -45,8 +45,6 @@ public class Simulation {
         // Parse the JSON into a configuration object.
         ConfigFile config = g.fromJson(content, ConfigFile.class);
 
-        System.out.println(config.carts[0].getTrainNumber());
-
         // If it did not parse correctly, reject.
         if(config == null){
             return false;
@@ -55,11 +53,17 @@ public class Simulation {
         // Put the items into the system.
         this.mapWidth = config.mapX;
         this.mapHeight = config.mapY;
-        this.entities = config.carts;
+        this.entities = new Entity[config.carts.length];
+
+        // Map the carts into the simulation.
+        for(int i = 0; i < config.carts.length; i += 1 ){
+            jsonEntity tmp = config.carts[i];
+            this.entities[i] = new Entity(tmp.x, tmp.y, tmp.trainNumber, tmp.direction);
+        }
 
         // Add up the total number of carts that are not pushers.
         for(int i = 0; i < config.carts.length; i += 1){
-            if(config.carts[i].getTrainNumber() >= 0){
+            if(config.carts[i].trainNumber >= 0){
                 this.numberOfCarts += 1;
             }
         }
@@ -71,7 +75,7 @@ public class Simulation {
             Point location = new Point(config.track[i].x, config.track[i].y);
 
             // Generate a new track.
-            Track newTrack = new Track(location, config.track[i].variation, config.track[i].isExit);
+            Tile newTrack = new Tile(location, config.track[i].variation, config.track[i].isExit);
 
             // If it's the exit, remember it.
             if(config.track[i].isExit){
@@ -105,22 +109,31 @@ public class Simulation {
         // Run the simulation up to the limit of ticks, or it's finished.
         while((this.cartsThatFinished + 1) < this.numberOfCarts && this.tickCount < 1){
 
+            // If the cart needs to still keep processing.
+            boolean stillProcessing = false;
+
             // Move each entity based on its tile.
             for(Entity entity : this.entities){
                 int result = entity.doNextMove(this.tiles, this.entities);
 
                 System.out.print(result);
-                System.out.print(" ");
+                System.out.print(" \n");
             }
 
             // Check for overlaps.
             System.out.println("\n");
 
 
+
+
             // Advance to the next tick.
             this.tickCount += 1;
+
+            break;
         }
 
+        // Debugging.
+        this.printMapWithCarts();
 
         return false;
     }
@@ -137,9 +150,49 @@ public class Simulation {
         this.tiles.remove(pos);
     }
 
+    void printMapWithCarts(){
+        System.out.println("=================================");
+
+        int [][] generatedMap = this.generateMap();
+
+        // Map the carts into the map.
+        for (Entity c : this.entities) {
+            generatedMap[c.getPos().y][c.getPos().x] = -10;
+        }
+
+        for(int y = 0; y < this.mapHeight; y += 1) {
+            for (int x = 0; x < this.mapWidth; x += 1) {
+                if(generatedMap[y][x] == -10){
+                    System.out.print("x");
+                }else{
+                    System.out.print(generatedMap[y][x]);
+                }
+
+            }
+            System.out.print("\n");
+        }
+
+        System.out.println("=================================");
+    }
+
     // Print out the map for visual feedback.
     void printMap(){
+        System.out.println("=================================");
 
+        int [][] generatedMap = this.generateMap();
+
+        // Print out the array.
+        for(int y = 0; y < this.mapHeight; y += 1) {
+            for (int x = 0; x < this.mapWidth; x += 1) {
+                System.out.print(generatedMap[y][x]);
+            }
+            System.out.print("\n");
+        }
+
+        System.out.println("=================================");
+    }
+
+    int [][] generateMap() {
         // Generate place holder to merge the elements in place.
         int[][] generatedMap = new int[this.mapHeight][this.mapWidth];
 
@@ -154,12 +207,6 @@ public class Simulation {
             generatedMap[key.y][key.x] = currentTile.getType();
         }
 
-        // Print out the array.
-        for(int y = 0; y < this.mapHeight; y += 1) {
-            for (int x = 0; x < this.mapWidth; x += 1) {
-                System.out.print(generatedMap[y][x]);
-            }
-            System.out.print("\n");
-        }
+        return generatedMap;
     }
 }

@@ -6,7 +6,6 @@ public interface Solver {
     // Simulation count
     // Cycle count
     // Solution count
-    //
 
     // A simulator to validate the solution.
     Simulation Sim = new Simulation();

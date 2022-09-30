@@ -8,10 +8,10 @@ public class ConfigFile {
     public int mapX = 0;
     public int mapY = 0;
 
-    public Entity[] carts;
+    public jsonEntity[] carts;
     public jsonTrack[] track;
 
-    public ConfigFile(Entity[] carts, int mapX, int mapY, jsonTrack[] track) {
+    public ConfigFile(jsonEntity[] carts, int mapX, int mapY, jsonTrack[] track) {
         this.carts = carts;
         this.mapX = mapX;
         this.mapY = mapY;
@@ -26,7 +26,7 @@ public class ConfigFile {
         return this.mapY;
     }
 
-    public Entity[] getCarts(){
+    public jsonEntity[] getCarts(){
         return this.carts;
     }
 
