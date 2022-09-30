@@ -82,6 +82,11 @@ public class Simulation {
                 this.endPosition = location;
             }
 
+            // Load the config if possible.
+            if(i == 0){
+                newTrack.Load();
+            }
+
             // Add the piece of track into the system.
             tiles.put(location, newTrack);
         }
