@@ -1,5 +1,6 @@
 package Entities;
 
+import Configuration.MovementItem;
 import Tiles.Tile;
 
 import java.awt.*;
@@ -44,17 +45,37 @@ public class Entity {
             return 0;
         }
 
-        // System.out.println("-zzz");
-
         // System.out.println(tiles);
         Tile currentTile = tiles.get(this.pos);
 
         // System.out.println(currentTile);
-        // System.out.println(this.pos);
+        // System.out.println(this.direction);
 
-        // System.out.println("-zzz");
+        // If the current tile is the end, finish the cart but reject.
+        if(currentTile.getIsExit()) {
 
-        return -1;
+            // Mark the train as completed.
+            this.completed = true;
+
+            // Return the train number.
+            return this.trainNumber;
+        }
+
+        // Get the next move for that entity based on the direction.
+        MovementItem nextMove = currentTile.CalcNextPosition(this.direction);
+
+        // System.out.println(nextMove);
+
+        // If the next move was found, apply it to the cart.
+        if(nextMove == null){
+            return -1;
+        }
+
+        // Apply the delta to the position and update the direction.
+        this.pos = new Point(this.pos.x + nextMove.x, this.pos.y + nextMove.y);
+        this.direction = nextMove.direction;
+
+        return 0;
     }
 
     public void reset(){

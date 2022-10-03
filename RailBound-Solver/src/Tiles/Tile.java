@@ -2,6 +2,7 @@ package Tiles;
 
 import Configuration.ConfigFile;
 import Configuration.MovementConfig;
+import Configuration.MovementItem;
 import com.google.gson.Gson;
 
 import java.awt.*;
@@ -18,16 +19,7 @@ public class Tile {
 
     boolean isExit = false;
 
-    /*
-         // Track type.
-         1:{
-            // Direction of the cart coming in.
-            0: Point(1, 0),
-            2: Point(-1, 0)
-         }
-    */
-    static HashMap<Integer, HashMap<Integer, Point>> movementMapping = null;
-
+    static HashMap<Integer, HashMap<Integer, MovementItem>> movementMapping = null;
 
     public Tile(Point pos, int origination, boolean isExit) {
         this.position = pos;
@@ -39,13 +31,16 @@ public class Tile {
         return origination;
     }
 
+    public boolean getIsExit(){
+        return this.isExit;
+    }
+
     /*
      * # CalcNextPosition
      *
      **/
-    public Point CalcNextPosition(int direction) {
-
-        return new Point(0, 0);
+    public MovementItem CalcNextPosition(int direction) {
+        return movementMapping.get(this.origination).get(direction);
     }
 
     public void Load() throws IOException {

@@ -111,36 +111,61 @@ public class Simulation {
         // Reset the simulation from last time.
         this.reset();
 
-        // Run the simulation up to the limit of ticks, or it's finished.
-        while((this.cartsThatFinished + 1) < this.numberOfCarts && this.tickCount < 1){
+        System.out.println("\n\nStart map.");
+        this.printMapWithCarts();
 
-            // If the cart needs to still keep processing.
-            boolean stillProcessing = false;
+        // Keep track if the solution is valid.
+        boolean validSolution = true;
+
+        // Run the simulation up to the limit of ticks, or it's finished.
+        while(validSolution && this.cartsThatFinished < this.numberOfCarts && this.tickCount < 1000){
 
             // Move each entity based on its tile.
             for(Entity entity : this.entities){
                 int result = entity.doNextMove(this.tiles, this.entities);
 
-                System.out.print(result);
-                System.out.print(" \n");
+                // Invalid or error.
+                if(result == -1){
+                    validSolution = false;
+                    break;
+                }
+
+                // result > 0 (success, return train number).
+                if(result > 0){
+
+                    // Make sure that the cart that finished is lastCart + 1.
+                    if(this.cartsThatFinished + 1 != result){
+                        validSolution = false;
+                        break;
+                    }
+
+                    // Mark the cart as done.
+                    this.cartsThatFinished += 1;
+                }
             }
 
             // Check for overlaps.
-            System.out.println("\n");
-
-
-
+            // TODO
 
             // Advance to the next tick.
             this.tickCount += 1;
 
-            break;
+            // Debugging.
+            System.out.println(this.tickCount);
+            this.printMapWithCarts();
+
+            // DEBUGGING.
+            if(this.tickCount == 600) {
+                System.out.println("Out of ticks");
+                break;
+            }
         }
 
         // Debugging.
+        System.out.println("\n\nFinal map.");
         this.printMapWithCarts();
 
-        return false;
+        return validSolution;
     }
 
     boolean isElementAt(Point pos){
@@ -162,6 +187,12 @@ public class Simulation {
 
         // Map the carts into the map.
         for (Entity c : this.entities) {
+
+            // Prevent drawing the cart if it goes off the array.
+            if(c.getPos().x < 0 || c.getPos().y < 0 || c.getPos().y >=this.mapHeight || c.getPos().y >= this.mapWidth){
+                continue;
+            }
+
             generatedMap[c.getPos().y][c.getPos().x] = -10;
         }
 

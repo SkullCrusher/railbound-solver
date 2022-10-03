@@ -9,7 +9,7 @@ public class DFSSolver implements Solver {
     public void solve() {
 
         // Print out the base map for debugging.
-        this.Sim.printMap();
+        // this.Sim.printMap();
 
         // Debugging - Run the simulation.
         boolean isValid = this.Sim.run();

@@ -21,6 +21,6 @@ public class Main {
         // Attempt to solve the problem.
         tmp.solve();
 
-        System.out.println("Hello world!");
+        // System.out.println("Hello world!");
     }
 }
