@@ -144,8 +144,28 @@ public class Simulation {
                 }
             }
 
+            // Keep track of where each cart is to see if there are any collisions.
+            HashMap<Point, Boolean> overlaps = new HashMap<>();
+
             // Check for overlaps.
-            // TODO
+            for(Entity entity : this.entities){
+
+                // Skip the cart if it's completed.
+                if(entity.getCompleted()){
+                    continue;
+                }
+
+                Boolean tmp = overlaps.get(entity.getPos());
+
+                // If there is a cart at the same position, it's invalid.
+                if(tmp != null){
+                    validSolution = false;
+                    break;
+                }
+
+                // Mark the location as pre-flagged.
+                overlaps.put(entity.getPos(), true);
+            }
 
             // Advance to the next tick.
             this.tickCount += 1;
@@ -153,12 +173,6 @@ public class Simulation {
             // Debugging.
             System.out.println(this.tickCount);
             this.printMapWithCarts();
-
-            // DEBUGGING.
-            if(this.tickCount == 600) {
-                System.out.println("Out of ticks");
-                break;
-            }
         }
 
         // Debugging.

@@ -89,4 +89,6 @@ public class Entity {
     }
 
     public Point getPos() { return this.pos; }
+
+    public Boolean getCompleted() { return this.completed; }
 }
