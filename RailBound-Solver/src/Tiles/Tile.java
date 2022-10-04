@@ -21,6 +21,12 @@ public class Tile {
 
     static HashMap<Integer, HashMap<Integer, MovementItem>> movementMapping = null;
 
+    // The black listed combinations, it's impossible to place a piece of track in such a way.
+    static HashMap<Integer, Boolean> rightBL = null;
+    static HashMap<Integer, Boolean> bottomBL = null;
+    static HashMap<Integer, Boolean> leftBL = null;
+    static HashMap<Integer, Boolean> upBL = null;
+
     public Tile(Point pos, int origination, boolean isExit) {
         this.position = pos;
         this.origination = origination;
@@ -35,12 +41,40 @@ public class Tile {
         return this.isExit;
     }
 
-    /*
-     * # CalcNextPosition
-     *
-     **/
-    public MovementItem CalcNextPosition(int direction) {
-        return movementMapping.get(this.origination).get(direction);
+    public boolean isValidTilePlacement(int mapWidth, int mapHeight){
+
+        // Check if the position is right edge.
+        if(this.position.x == (mapWidth - 1) && rightBL.get(this.origination) != null){
+            return false;
+        }
+
+        // Check if the position is bottom edge.
+        if(this.position.y == (mapHeight - 1) && bottomBL.get(this.origination) != null){
+            return false;
+        }
+
+        // Check if the position is left edge.
+        if(this.position.x == 0 && leftBL.get(this.origination) != null){
+            return false;
+        }
+
+        // Check if the position is top edge.
+        return this.position.y != 0 || upBL.get(this.origination) == null;
+    }
+
+    public MovementItem CalcNextPosition(int direction) throws IOException {
+
+        if(movementMapping == null){
+            this.Load();
+        }
+
+        HashMap<Integer, MovementItem> tmp = movementMapping.get(this.origination);
+
+        if(tmp == null){
+            return null;
+        }
+
+        return tmp.get(direction);
     }
 
     public void Load() throws IOException {
@@ -65,5 +99,11 @@ public class Tile {
 
         // Update the internal object.
         movementMapping = config.movementMapping;
+
+        // Put the black list in place.
+        rightBL = config.rightBlacklist;
+        bottomBL = config.bottomBlacklist;
+        leftBL = config.leftBlacklist;
+        upBL = config.topBlacklist;
     }
 }

@@ -12,5 +12,5 @@ public interface Solver {
 
     boolean loadConfiguration(String path) throws IOException;
 
-    void solve();
+    void solve() throws IOException;
 }

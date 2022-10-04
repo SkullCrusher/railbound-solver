@@ -106,13 +106,13 @@ public class Simulation {
     }
 
     // Runs the simulation with the current configuration.
-    boolean run() {
+    boolean run() throws IOException {
 
         // Reset the simulation from last time.
         this.reset();
 
-        System.out.println("\n\nStart map.");
-        this.printMapWithCarts();
+        // System.out.println("\n\nStart map.");
+        // this.printMapWithCarts();
 
         // Keep track if the solution is valid.
         boolean validSolution = true;
@@ -171,13 +171,13 @@ public class Simulation {
             this.tickCount += 1;
 
             // Debugging.
-            System.out.println(this.tickCount);
-            this.printMapWithCarts();
+            // System.out.println(this.tickCount);
+            // this.printMapWithCarts();
         }
 
         // Debugging.
-        System.out.println("\n\nFinal map.");
-        this.printMapWithCarts();
+        // System.out.println("\n\nFinal map.");
+        // this.printMapWithCarts();
 
         return validSolution;
     }
@@ -186,12 +186,61 @@ public class Simulation {
         return this.tiles.containsKey(pos);
     }
 
+    Tile getTileAtPos(Point pos) {
+        return this.tiles.get(pos);
+    }
+
     void setTileAtPos(Point pos, Tile newTile) {
         this.tiles.put(pos, newTile);
     }
 
     void removeTileAtPos(Point pos) {
         this.tiles.remove(pos);
+    }
+
+    // Find the cart that is being requested and return it's current location.
+    Point getCartPosition(int trainNumber){
+        for(Entity entity : this.entities){
+            if(entity.getTrainNumber() == trainNumber){
+                return entity.getPos();
+            }
+        }
+
+        return null;
+    }
+
+    HashMap<Integer, Point> getCartStartingPos(){
+
+        HashMap<Integer, Point> result = new HashMap<>();
+
+        for(Entity entity : this.entities){
+            result.put(entity.getTrainNumber(), entity.getStartPos());
+        }
+
+        return result;
+    }
+
+    HashMap<Integer, Integer> getCartStartingDirection(){
+
+        HashMap<Integer, Integer> result = new HashMap<>();
+
+        for(Entity entity : this.entities){
+            result.put(entity.getTrainNumber(), entity.getDirection());
+        }
+
+        return result;
+    }
+
+    public boolean isPosInMap(Point arg){
+        return arg.x >= 0 && arg.y >= 0 && arg.x < this.mapWidth && arg.y < this.mapHeight;
+    }
+
+    public int getMapWidth() {
+        return this.mapWidth;
+    }
+
+    public int getMapHeight(){
+        return this.mapHeight;
     }
 
     int getNumberOfCarts(){
@@ -231,19 +280,32 @@ public class Simulation {
 
     // Print out the map for visual feedback.
     void printMap(){
-        System.out.println("=================================");
+        // System.out.println("=================================");
 
         int [][] generatedMap = this.generateMap();
 
+        // Build the spacer to help make the map easier to read.
+        StringBuilder spacer = new StringBuilder();
+        spacer.append(" |  ".repeat(Math.max(0, this.mapWidth)));
+
         // Print out the array.
         for(int y = 0; y < this.mapHeight; y += 1) {
+
+            // Print out the spacer.
+            if(y > 0) {
+                System.out.println(spacer);
+            }
+
             for (int x = 0; x < this.mapWidth; x += 1) {
-                System.out.print(generatedMap[y][x]);
+                if(x > 0){
+                    System.out.print("-");
+                }
+                System.out.print(String.format("%03d", generatedMap[y][x]));
             }
             System.out.print("\n");
         }
 
-        System.out.println("=================================");
+        // System.out.println("=================================");
     }
 
     int [][] generateMap() {

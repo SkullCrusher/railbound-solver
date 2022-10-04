@@ -208,6 +208,34 @@
 				"y": -1,
 				"direction": 3
 			}
+		},
+		15: {
+
 		}
+	},
+	"notes2": "The list of tiles that CANNOT be placed at each edge because the game stops you.",
+	"rightBlacklist": {
+		4: true,
+		6: true,
+		11: true,
+		12: true
+	},
+	"bottomBlacklist": {
+		5: true,
+		6: true,
+		9: true,
+		10: true
+	},
+	"leftBlacklist": {
+		3: true,
+		5: true,
+		13: true,
+		14: true
+	},
+	"topBlacklist": {
+		3: true,
+		4: true,
+		7: true,
+		8: true
 	}
 }

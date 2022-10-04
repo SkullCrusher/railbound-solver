@@ -4,6 +4,7 @@ import Configuration.MovementItem;
 import Tiles.Tile;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.HashMap;
 
 /**
@@ -38,7 +39,7 @@ public class Entity {
     }
 
     // Do the next move for the entity.
-    public int doNextMove(HashMap<Point, Tile> tiles, Entity[] entities){
+    public int doNextMove(HashMap<Point, Tile> tiles, Entity[] entities) throws IOException {
 
         // Stop processing if it got to the exit.
         if(this.completed) {
@@ -94,6 +95,11 @@ public class Entity {
     }
 
     public Point getPos() { return this.pos; }
+
+    public Point getStartPos() { return this.startPos; }
+
+
+    public int getDirection() { return this.direction; }
 
     public Boolean getCompleted() { return this.completed; }
 }
