@@ -51,6 +51,11 @@ public class Entity {
         // System.out.println(currentTile);
         // System.out.println(this.direction);
 
+        // If we moved off the tiles, it's an invalid solution.
+        if(currentTile == null){
+            return -1;
+        }
+
         // If the current tile is the end, finish the cart but reject.
         if(currentTile.getIsExit()) {
 

@@ -4,13 +4,13 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         // Debugging.
-        String path = "E:\\Source\\railbound-solver\\RailBound-Solver\\Example\\w-1-15-solved.json";
+        String path = "E:\\Source\\railbound-solver\\RailBound-Solver\\Example\\w-1-15.json";
 
         // Create a new solver.
-        var tmp = new DFSSolver();
+        var dfs = new DFSSolver();
 
         // Load the configuration from test cases.
-        boolean validConfiguration = tmp.loadConfiguration(path);
+        boolean validConfiguration = dfs.loadConfiguration(path);
 
         // Verify that the configuration was parsable.
         if(!validConfiguration) {
@@ -19,8 +19,6 @@ public class Main {
         }
 
         // Attempt to solve the problem.
-        tmp.solve();
-
-        // System.out.println("Hello world!");
+        dfs.solve();
     }
 }

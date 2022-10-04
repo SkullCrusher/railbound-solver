@@ -194,6 +194,10 @@ public class Simulation {
         this.tiles.remove(pos);
     }
 
+    int getNumberOfCarts(){
+        return this.numberOfCarts;
+    }
+
     void printMapWithCarts(){
         System.out.println("=================================");
 
