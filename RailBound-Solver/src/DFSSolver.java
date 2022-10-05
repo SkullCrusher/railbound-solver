@@ -13,18 +13,21 @@ public class DFSSolver implements Solver {
     // Saves the history of all the combinations already visited to prevent duplicate work.
     HashMap<String, Boolean> history = new HashMap<>();
 
-    boolean foundSolution = false;
+    public boolean foundSolution = false;
+
+    long start = 0;
+    long end = 0;
+
+    public long computeTime = 0;
+
+
+    public HashMap<Point, Tile> Solution = new HashMap<>();
 
     public boolean loadConfiguration(String path) throws IOException {
         return Sim.loadFile(path);
     }
 
     public void solve() throws IOException {
-
-        // Print out the base map for debugging.
-        System.out.println("==== Starting Map ====");
-        this.Sim.printMap();
-        System.out.println("====\n");
 
         // Get the starting locations of each cart to prevent doing lookups.
         this.sLoc = this.Sim.getCartStartingPos();
@@ -33,14 +36,31 @@ public class DFSSolver implements Solver {
         // How many tiles are there.
         int tileCount = new Tile(new Point(0, 0), 0, false).getMovementMapCount();
 
-        // Generate the possible solutions.
-        int totalSolutions = dfs(1, this.sLoc.get(1), this.sDir.get(1), this.Sim.getAvailableTrack(), tileCount, 0);
+        this.start = System.currentTimeMillis();
 
-        System.out.println("solutions");
-        System.out.println(totalSolutions);
+        // Generate the possible solutions.
+        dfs(1, this.sLoc.get(1), this.sDir.get(1), this.Sim.getAvailableTrack(), tileCount, 0);
+
+        this.end = System.currentTimeMillis();
+
+        // How long it took to compute.
+        this.computeTime = this.end - this.start;
     }
 
     int dfs(int cart, Point pos, int direction, int trackPiecesLeft, int typeOfTrackPieces, int depth) throws IOException {
+
+        // System.out.println(pos);
+        // this.Sim.printMap();
+
+        // Force a timeout after 5 seconds without a solution (to make it easier).
+        if(System.currentTimeMillis() - this.start > 5000){
+            return 0;
+        }
+
+        // If we have a solution, stop processing more.
+        if(this.foundSolution){
+            return 0;
+        }
 
         // this.Sim.printMap();
         if(this.sLoc == null || this.sDir == null){
@@ -78,8 +98,10 @@ public class DFSSolver implements Solver {
                 boolean result = this.Sim.run();
 
                 if(result && !this.foundSolution){
-                    this.Sim.printMap();
+                    // this.Sim.printMap();
                     this.foundSolution = true;
+
+                    this.Solution = (HashMap<Point, Tile>) this.Sim.tiles.clone();
                 }
 
                 return (result) ? 1 : 0;
