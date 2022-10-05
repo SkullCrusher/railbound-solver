@@ -6,10 +6,7 @@ public class Main {
 
 
     // The levels from world 1.
-    // static String [] world1 = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "11a", "11b", "12", "12a", "13", "13a", "14", "14a", "15", "15a"};
-
-    static String [] world1 = {"11b"};
-
+    static String [] world1 = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "11a", "11b", "12", "12a", "13", "13a", "14", "14a", "15", "15a"};
 
     static void solve(String filename, String path, String outputPath) throws IOException {
 
