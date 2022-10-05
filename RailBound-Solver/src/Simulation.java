@@ -41,6 +41,21 @@ public class Simulation {
     // Hooks are a number that ticks on each even, based on that tiles will know their state.
     HashMap<Integer, Integer> hooks = new HashMap<>();
 
+    // Reset the objects to prevent issues :/
+    void clearClass(){
+        this.tickCount = 0;
+        this.tickLimit = 50;
+        this.mapWidth = 0;
+        this.mapHeight = 0;
+        this.availableTrack = 0;
+        this.numberOfCarts = 0;
+        this.cartsThatFinished = 0;
+        this.endPosition = new Point(-1, -1);
+        this.tiles = new HashMap<>();
+        this.entities = new Entity[0];
+        this.hooks = new HashMap<>();
+    }
+
     boolean loadFile(String filename) throws IOException {
 
         // Load the file into a string if it exists.
@@ -55,6 +70,9 @@ public class Simulation {
         if(config == null){
             return false;
         }
+
+        // Reset the object to prevent issues.
+        this.clearClass();
 
         // Put the items into the system.
         this.mapWidth = config.mapX;
@@ -313,6 +331,7 @@ public class Simulation {
     }
 
     int [][] generateMap() {
+
         // Generate place holder to merge the elements in place.
         int[][] generatedMap = new int[this.mapHeight][this.mapWidth];
 
