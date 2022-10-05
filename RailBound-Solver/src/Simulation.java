@@ -301,8 +301,11 @@ public class Simulation {
     }
 
     // Print out the map for visual feedback.
-    void printMap(){
-        System.out.println("====");
+    String printMap(){
+
+        StringBuilder result = new StringBuilder();
+
+        // System.out.println("====");
 
         int [][] generatedMap = this.generateMap();
 
@@ -315,19 +318,25 @@ public class Simulation {
 
             // Print out the spacer.
             if(y > 0) {
-                System.out.println(spacer);
+                // System.out.println(spacer);
+                result.append(spacer).append("\n");
             }
 
             for (int x = 0; x < this.mapWidth; x += 1) {
                 if(x > 0){
-                    System.out.print("-");
+                    // System.out.print("-");
+                    result.append("-");
                 }
-                System.out.print(String.format("%03d", generatedMap[y][x]));
+                // System.out.print(String.format("%03d", generatedMap[y][x]));
+                result.append(String.format("%03d", generatedMap[y][x]));
             }
-            System.out.print("\n");
+            // System.out.print("\n");
+            result.append("\n");
         }
 
-        System.out.println("====");
+        // System.out.println("====");
+
+        return result.toString();
     }
 
     int [][] generateMap() {

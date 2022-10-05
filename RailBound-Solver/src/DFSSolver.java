@@ -15,6 +15,8 @@ public class DFSSolver implements Solver {
 
     public boolean foundSolution = false;
 
+    public String solutionString = "";
+
     long start = 0;
     long end = 0;
 
@@ -33,13 +35,10 @@ public class DFSSolver implements Solver {
         this.sLoc = this.Sim.getCartStartingPos();
         this.sDir = this.Sim.getCartStartingDirection();
 
-        // How many tiles are there.
-        int tileCount = new Tile(new Point(0, 0), 0, false).getMovementMapCount();
-
         this.start = System.currentTimeMillis();
 
         // Generate the possible solutions.
-        dfs(1, this.sLoc.get(1), this.sDir.get(1), this.Sim.getAvailableTrack(), tileCount, 0);
+        dfs(1, this.sLoc.get(1), this.sDir.get(1), this.Sim.getAvailableTrack(), 14, 0);
 
         this.end = System.currentTimeMillis();
 
@@ -53,7 +52,7 @@ public class DFSSolver implements Solver {
         // this.Sim.printMap();
 
         // Force a timeout after 5 seconds without a solution (to make it easier).
-        if(System.currentTimeMillis() - this.start > 5000){
+        if(System.currentTimeMillis() - this.start > 105000){
             return 0;
         }
 
@@ -100,6 +99,14 @@ public class DFSSolver implements Solver {
                 solutions += dfs(cart + 1, sLoc.get(cart + 1), sDir.get(cart + 1), trackPiecesLeft, typeOfTrackPieces, depth);
             }
 
+            // Look up the next move first to make SURE that the cart could actually do that move.
+            MovementItem newMove = currentTrack.CalcNextPosition(direction);
+
+            // If there is NO next move, do nothing.
+            if(newMove == null){
+                return 0;
+            }
+
             // If it's the exit, run the simulation.
             if(currentTrack.getIsExit()){
                 boolean result = this.Sim.run();
@@ -107,18 +114,11 @@ public class DFSSolver implements Solver {
                 if(result && !this.foundSolution){
                     // this.Sim.printMap();
                     this.foundSolution = true;
-
+                    this.solutionString = this.Sim.printMap();
                     this.Solution = (HashMap<Point, Tile>) this.Sim.tiles.clone();
                 }
 
                 return (result) ? 1 : 0;
-            }
-
-            MovementItem newMove = currentTrack.CalcNextPosition(direction);
-
-            // If there is NO next move, do nothing.
-            if(newMove == null){
-                return 0;
             }
 
             Point newPos = new Point(pos.x + newMove.x, pos.y + newMove.y);
