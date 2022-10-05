@@ -44,7 +44,7 @@ public class Main {
 
         // World 2.
 
-        // solve("w-1-03.json", "./world-problems/world-1/w-1-03.json");
+        //solve("w-1-08.json", "./world-problems/world-1/w-1-08.json");
 
         // World 1.
 
@@ -53,7 +53,6 @@ public class Main {
             String filename = "w-1-" + s + ".json";
             solve(filename, "./world-problems/world-1/" + filename);
         }
-        
 
     }
 }

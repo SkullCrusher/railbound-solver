@@ -90,8 +90,15 @@ public class DFSSolver implements Solver {
         // If the current location has a piece of track, follow it.
         Tile currentTrack = this.Sim.getTileAtPos(pos);
 
+        int solutions = 0;
+
         // If there is one, follow it and do the child.
         if(currentTrack != null){
+
+            // Simulate the child first.
+            if(sLoc.get(cart + 1) != null) {
+                solutions += dfs(cart + 1, sLoc.get(cart + 1), sDir.get(cart + 1), trackPiecesLeft, typeOfTrackPieces, depth);
+            }
 
             // If it's the exit, run the simulation.
             if(currentTrack.getIsExit()){
@@ -117,10 +124,8 @@ public class DFSSolver implements Solver {
             Point newPos = new Point(pos.x + newMove.x, pos.y + newMove.y);
 
             // Do the next item on the search from the move.
-            return dfs(cart, newPos, newMove.direction, trackPiecesLeft, typeOfTrackPieces, depth + 1);
+            return solutions + dfs(cart, newPos, newMove.direction, trackPiecesLeft, typeOfTrackPieces, depth + 1);
         }
-
-        int solutions = 0;
 
         // Do the base simulation before the tile is added.
         if(sLoc.get(cart + 1) != null) {
