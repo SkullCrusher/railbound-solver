@@ -10,6 +10,10 @@ public class DFSSolver implements Solver {
     HashMap<Integer, Point> sLoc = new HashMap<>();
     HashMap<Integer, Integer> sDir = new HashMap<>();
 
+    // Saves the history of all the combinations already visited to prevent duplicate work.
+    HashMap<String, Boolean> history = new HashMap<>();
+
+    boolean foundSolution = false;
 
     public boolean loadConfiguration(String path) throws IOException {
         return Sim.loadFile(path);
@@ -48,8 +52,8 @@ public class DFSSolver implements Solver {
             return 0;
         }
 
-        // If the depth is over 1000, it's invalid.
-        if(depth > 1000){
+        // If the depth is over 1000, it's invalid. (prevents infinite loops).
+        if(depth > 50){
             return 0;
         }
 
@@ -73,8 +77,9 @@ public class DFSSolver implements Solver {
             if(currentTrack.getIsExit()){
                 boolean result = this.Sim.run();
 
-                if(result){
+                if(result && !this.foundSolution){
                     this.Sim.printMap();
+                    this.foundSolution = true;
                 }
 
                 return (result) ? 1 : 0;

@@ -16,6 +16,9 @@ public class Simulation {
     // Metrics.
     public int tickCount = 0;
 
+    // How many is the maximum number of cycles for a simulation.
+    public int tickLimit = 50;
+
     // The size of the map which defines the limitation.
     int mapWidth = 0;
     int mapHeight = 0;
@@ -115,14 +118,11 @@ public class Simulation {
         // Reset the simulation from last time.
         this.reset();
 
-        // System.out.println("\n\nStart map.");
-        // this.printMapWithCarts();
-
         // Keep track if the solution is valid.
         boolean validSolution = true;
 
         // Run the simulation up to the limit of ticks, or it's finished.
-        while(validSolution && this.cartsThatFinished < this.numberOfCarts && this.tickCount < 1000){
+        while(validSolution && this.cartsThatFinished < this.numberOfCarts && this.tickCount < this.tickLimit){
 
             // Move each entity based on its tile.
             for(Entity entity : this.entities){
@@ -178,10 +178,6 @@ public class Simulation {
             // System.out.println(this.tickCount);
             // this.printMapWithCarts();
         }
-
-        // Debugging.
-        // System.out.println("\n\nFinal map.");
-        // this.printMapWithCarts();
 
         return validSolution;
     }

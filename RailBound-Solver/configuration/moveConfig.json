@@ -216,20 +216,18 @@
 	"rightBlacklist": {
 		4: true,
 		6: true,
-		11: true,
-		12: true,
-
 		7: true,
 		8: true,
 		9: true,
-		10: true
+		10: true,
+		11: true,
+		12: true
 	},
 	"bottomBlacklist": {
 		5: true,
 		6: true,
 		9: true,
 		10: true,
-
 		11: true,
 		12: true,
 		13: true,
@@ -238,23 +236,28 @@
 	"leftBlacklist": {
 		3: true,
 		5: true,
-		13: true,
-		14: true,
-
 		7: true,
 		8: true,
 		9: true,
-		10: true
+		10: true,
+		13: true,
+		14: true
 	},
 	"topBlacklist": {
 		3: true,
 		4: true,
 		7: true,
 		8: true,
-
 		11: true,
 		12: true,
 		13: true,
 		14: true
+	},
+
+	"note3-1": "To remove duplicate solutions, prevent leaving trailing tracks..",
+	"trailingTracks": {
+		7: {
+
+		}
 	}
 }
