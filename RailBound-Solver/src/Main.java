@@ -22,7 +22,21 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        // World 1
+        // World 8.
+
+        // World 7.
+
+        // World 6.
+
+        // World 5.
+
+        // World 4.
+
+        // World 3.
+
+        // World 2.
+
+        // World 1.
         // solve("./example/world-1/w-1-01.json");
         // solve("./example/world-1/w-1-02.json");
         // solve("./example/world-1/w-1-03.json");
