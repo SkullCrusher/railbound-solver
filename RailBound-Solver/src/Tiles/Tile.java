@@ -33,6 +33,10 @@ public class Tile {
         this.isExit = isExit;
     }
 
+    public int getMovementMapCount(){
+        return movementMapping.size();
+    }
+
     public int getType(){
         return origination;
     }

@@ -14,25 +14,32 @@ public class DFSSolver implements Solver {
     public void solve() throws IOException {
 
         // Print out the base map for debugging.
-        System.out.println("====");
+        System.out.println("==== Starting Map ====");
         this.Sim.printMap();
         System.out.println("====\n");
-
-        // Debugging simulation.
-        // System.out.println(this.Sim.run());
 
         // Get the starting locations of each cart to prevent doing lookups.
         HashMap<Integer, Point> sLoc = this.Sim.getCartStartingPos();
         HashMap<Integer, Integer> sDir = this.Sim.getCartStartingDirection();
 
+        // How many tiles are there.
+        int tileCount = new Tile(new Point(0, 0), 0, false).getMovementMapCount();
+
         // Generate the possible solutions.
-        int totalSolutions = dfs(sLoc.get(1), sDir.get(1), this.Sim.getAvailableTrack(), 15);
+        int totalSolutions = dfs(sLoc.get(1), sDir.get(1), this.Sim.getAvailableTrack(), tileCount, 0);
 
         System.out.println("solutions");
         System.out.println(totalSolutions);
     }
 
-    int dfs(Point pos, int direction, int trackPiecesLeft, int typeOfTrackPieces) throws IOException {
+    int dfs(Point pos, int direction, int trackPiecesLeft, int typeOfTrackPieces, int depth) throws IOException {
+
+        // this.Sim.printMap();
+
+        // If the depth is over 1000, it's invalid.
+        if(depth > 1000){
+            return 0;
+        }
 
         // If the position is off the map, reject it.
         if(!this.Sim.isPosInMap(pos)){
@@ -71,7 +78,7 @@ public class DFSSolver implements Solver {
             Point newPos = new Point(pos.x + newMove.x, pos.y + newMove.y);
 
             // Do the next item on the search from the move.
-            return dfs(newPos, newMove.direction, trackPiecesLeft, typeOfTrackPieces);
+            return dfs(newPos, newMove.direction, trackPiecesLeft, typeOfTrackPieces, depth + 1);
         }
 
         int solutions = 0;
@@ -96,7 +103,7 @@ public class DFSSolver implements Solver {
                 Point newPos = new Point(pos.x + newMove.x, pos.y + newMove.y);
 
                 // Do the depth first search base on the new location.
-                solutions += dfs(newPos, newMove.direction, trackPiecesLeft - 1, typeOfTrackPieces);
+                solutions += dfs(newPos, newMove.direction, trackPiecesLeft - 1, typeOfTrackPieces, depth);
             }
 
             // Remove it.
