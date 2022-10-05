@@ -20,6 +20,9 @@ public class Simulation {
     int mapWidth = 0;
     int mapHeight = 0;
 
+    // How many pieces of track total that are possible.
+    int availableTrack = 0;
+
     int numberOfCarts = 0;
     int cartsThatFinished = 0;
 
@@ -53,6 +56,7 @@ public class Simulation {
         // Put the items into the system.
         this.mapWidth = config.mapX;
         this.mapHeight = config.mapY;
+        this.availableTrack = config.availableTrack;
         this.entities = new Entity[config.carts.length];
 
         // Map the carts into the simulation.
@@ -186,6 +190,10 @@ public class Simulation {
         return this.tiles.containsKey(pos);
     }
 
+    int getAvailableTrack(){
+        return this.availableTrack;
+    }
+
     Tile getTileAtPos(Point pos) {
         return this.tiles.get(pos);
     }
@@ -198,7 +206,7 @@ public class Simulation {
         this.tiles.remove(pos);
     }
 
-    // Find the cart that is being requested and return it's current location.
+    // Find the cart that is being requested and return its current location.
     Point getCartPosition(int trainNumber){
         for(Entity entity : this.entities){
             if(entity.getTrainNumber() == trainNumber){
@@ -280,7 +288,7 @@ public class Simulation {
 
     // Print out the map for visual feedback.
     void printMap(){
-        // System.out.println("=================================");
+        System.out.println("====");
 
         int [][] generatedMap = this.generateMap();
 
@@ -305,7 +313,7 @@ public class Simulation {
             System.out.print("\n");
         }
 
-        // System.out.println("=================================");
+        System.out.println("====");
     }
 
     int [][] generateMap() {

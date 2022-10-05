@@ -28,7 +28,7 @@
 		3: {
 			0: {
 				"x": 0,
-				"y": 1,
+				"y": -1,
 				"direction": 3
 			},
 			1: {
@@ -218,24 +218,44 @@
 		4: true,
 		6: true,
 		11: true,
-		12: true
+		12: true,
+
+		7: true,
+		8: true,
+		9: true,
+		10: true
 	},
 	"bottomBlacklist": {
 		5: true,
 		6: true,
 		9: true,
-		10: true
+		10: true,
+
+		11: true,
+		12: true,
+		13: true,
+		14: true
 	},
 	"leftBlacklist": {
 		3: true,
 		5: true,
 		13: true,
-		14: true
+		14: true,
+
+		7: true,
+		8: true,
+		9: true,
+		10: true
 	},
 	"topBlacklist": {
 		3: true,
 		4: true,
 		7: true,
-		8: true
+		8: true,
+
+		11: true,
+		12: true,
+		13: true,
+		14: true
 	}
 }

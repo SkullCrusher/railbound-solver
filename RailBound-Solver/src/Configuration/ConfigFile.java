@@ -8,6 +8,9 @@ public class ConfigFile {
     public int mapX = 0;
     public int mapY = 0;
 
+    // How many pieces of track are given to solve the puzzle.
+    public int availableTrack = 0;
+
     public jsonEntity[] carts;
     public jsonTrack[] track;
 
@@ -17,6 +20,8 @@ public class ConfigFile {
         this.mapY = mapY;
         this.track = track;
     }
+
+    public int getAvailableTrack() { return this.availableTrack; }
 
     public int getMapX(){
         return this.mapX;

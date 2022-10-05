@@ -26,7 +26,7 @@ public class DFSSolver implements Solver {
         HashMap<Integer, Integer> sDir = this.Sim.getCartStartingDirection();
 
         // Generate the possible solutions.
-        int totalSolutions = dfs(sLoc.get(1), sDir.get(1), 3, 15);
+        int totalSolutions = dfs(sLoc.get(1), sDir.get(1), this.Sim.getAvailableTrack(), 15);
 
         System.out.println("solutions");
         System.out.println(totalSolutions);
@@ -57,7 +57,6 @@ public class DFSSolver implements Solver {
                 if(result){
                     this.Sim.printMap();
                 }
-
 
                 return (result) ? 1 : 0;
             }
