@@ -1,0 +1,51 @@
+{
+  "mapX": 5,
+  "mapY": 6,
+  "availableTrack": 14,
+  "carts": [
+    {
+      "direction": 0,
+      "trainNumber": 1,
+      "x": 0,
+      "y": 1
+    },
+    {
+      "direction": 2,
+      "trainNumber": 2,
+      "x": 4,
+      "y": 1
+    },
+    {
+      "direction": 0,
+      "trainNumber": 3,
+      "x": 0,
+      "y": 5
+    }
+  ],
+  "track": [
+    {
+      "variation": 1,
+      "x": 0,
+      "y": 1,
+      "isExit": false
+    },
+    {
+      "variation": 1,
+      "x": 0,
+      "y": 5,
+      "isExit": false
+    },
+    {
+      "variation": 1,
+      "x": 4,
+      "y": 1,
+      "isExit": false
+    },
+    {
+      "variation": 1,
+      "x": 4,
+      "y": 5,
+      "isExit": true
+    }
+  ]
+}

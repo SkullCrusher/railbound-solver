@@ -89,7 +89,10 @@ public class Tile {
         }
 
         // Load the file into a string if it exists.
-        String content = new String(Files.readAllBytes(Paths.get("E:\\Source\\railbound-solver\\RailBound-Solver\\configuration\\moveConfig.json")));
+        // String content = new String(Files.readAllBytes(Paths.get("E:\\Source\\railbound-solver\\RailBound-Solver\\configuration\\moveConfig.json")));
+        String content = new String(Files.readAllBytes(Paths.get("./configuration/moveConfig.json")));
+
+        //
 
         Gson g = new Gson();
 
