@@ -52,7 +52,7 @@ public class DFSSolver implements Solver {
         // this.Sim.printMap();
 
         // Force a timeout after 5 seconds without a solution (to make it easier).
-        if(System.currentTimeMillis() - this.start > 105000){
+        if(System.currentTimeMillis() - this.start > 150000){
             return 0;
         }
 

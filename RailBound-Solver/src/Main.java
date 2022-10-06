@@ -1,8 +1,12 @@
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class Main {
+
 
 
     // The levels from world 1.
@@ -73,5 +77,32 @@ public class Main {
             solve(filename, "./world-problems/world-1/" + filename, "./generated-solutions/world-1/" + "w-1-" + s + ".txt");
         }
 
+    }
+
+    @Test
+    public void world1Test() throws IOException {
+        String basePath = "./world-solutions/world-1/";
+
+        // Simulation the known solutions for world 1.
+        for (String s : world1) {
+            Simulation currentSimulation = new Simulation();
+
+            String filename = "w-1-" + s + "-solved.json";
+
+            // Load the configuration that is already solved.
+            currentSimulation.loadFile(basePath + filename);
+
+            // Run the simulation.
+            boolean result = currentSimulation.run();
+
+            // Run the simulation and verify it was successful.
+            System.out.println("Simulation result on '" + filename + "' - " + result);
+
+            if(!result){
+                System.out.println(currentSimulation.printMap());
+            }
+
+            Assert.assertTrue(result);
+        }
     }
 }

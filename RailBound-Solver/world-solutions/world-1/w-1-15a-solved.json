@@ -42,10 +42,22 @@
       "y": 1,
       "isExit": false
     },
+	{
+      "variation": 6,
+      "x": 1,
+      "y": 2,
+      "isExit": false
+    },
     {
       "variation": 2,
       "x": 1,
       "y": 3,
+      "isExit": false
+    },
+	{
+      "variation": 4,
+      "x": 1,
+      "y": 4,
       "isExit": false
     },
     {
@@ -55,6 +67,12 @@
       "isExit": false
     },
 	
+	{
+      "variation": 5,
+      "x": 2,
+      "y": 1,
+      "isExit": false
+    },
     {
       "variation": 3,
       "x": 2,
@@ -67,11 +85,47 @@
       "y": 4,
       "isExit": false
     },
+	{
+      "variation": 13,
+      "x": 2,
+      "y": 5,
+      "isExit": false
+    },
+	{
+      "variation": 4,
+      "x": 2,
+      "y": 6,
+      "isExit": false
+    },
 	
+	{
+      "variation": 6,
+      "x": 3,
+      "y": 0,
+      "isExit": false
+    },
+	{
+      "variation": 2,
+      "x": 3,
+      "y": 1,
+      "isExit": false
+    },
+	{
+      "variation": 2,
+      "x": 3,
+      "y": 2,
+      "isExit": false
+    },
     {
       "variation": 2,
       "x": 3,
       "y": 3,
+      "isExit": false
+    },
+	{
+      "variation": 2,
+      "x": 3,
+      "y": 4,
       "isExit": false
     },
     {
@@ -80,7 +134,25 @@
       "y": 5,
       "isExit": false
     },
+	{
+      "variation": 3,
+      "x": 3,
+      "y": 6,
+      "isExit": false
+    },
 	
+	{
+      "variation": 5,
+      "x": 4,
+      "y": 0,
+      "isExit": false
+    },
+	{
+      "variation": 11,
+      "x": 4,
+      "y": 1,
+      "isExit": false
+    },
     {
       "variation": 4,
       "x": 4,
@@ -93,6 +165,12 @@
       "y": 4,
       "isExit": false
     },
+	{
+      "variation": 4,
+      "x": 4,
+      "y": 5,
+      "isExit": false
+    },
 	
     {
       "variation": 1,
@@ -100,10 +178,22 @@
       "y": 1,
       "isExit": false
     },
+	{
+      "variation": 5,
+      "x": 5,
+      "y": 2,
+      "isExit": false
+    },
     {
       "variation": 2,
       "x": 5,
       "y": 3,
+      "isExit": false
+    },
+	{
+      "variation": 3,
+      "x": 5,
+      "y": 4,
       "isExit": false
     },
     {

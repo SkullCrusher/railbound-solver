@@ -1,5 +1,5 @@
 {
-  "mapX": 8,
+  "mapX": 6,
   "mapY": 3,
   "availableTrack": 13,
   "carts": [
@@ -13,12 +13,6 @@
       "direction": 0,
       "trainNumber": 2,
       "x": 2,
-      "y": 1
-    },
-    {
-      "direction": 2,
-      "trainNumber": 3,
-      "x": 6,
       "y": 1
     }
   ],
@@ -37,13 +31,7 @@
     },
     {
       "variation": 1,
-      "x": 6,
-      "y": 1,
-      "isExit": false
-    },
-    {
-      "variation": 1,
-      "x": 7,
+      "x": 5,
       "y": 1,
       "isExit": true
     }

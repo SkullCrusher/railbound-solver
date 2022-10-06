@@ -139,6 +139,8 @@ public class Simulation {
         // Keep track if the solution is valid.
         boolean validSolution = true;
 
+        // this.printMapWithCarts();
+
         // Run the simulation up to the limit of ticks, or it's finished.
         while(validSolution && this.cartsThatFinished < this.numberOfCarts && this.tickCount < this.tickLimit){
 
@@ -197,6 +199,7 @@ public class Simulation {
             // this.printMapWithCarts();
         }
 
+        // this.printMapWithCarts();
         return validSolution;
     }
 
@@ -285,14 +288,27 @@ public class Simulation {
             generatedMap[c.getPos().y][c.getPos().x] = -10;
         }
 
-        for(int y = 0; y < this.mapHeight; y += 1) {
-            for (int x = 0; x < this.mapWidth; x += 1) {
-                if(generatedMap[y][x] == -10){
-                    System.out.print("x");
-                }else{
-                    System.out.print(generatedMap[y][x]);
-                }
+        // Build the spacer to help make the map easier to read.
+        StringBuilder spacer = new StringBuilder();
+        spacer.append(" |  ".repeat(Math.max(0, this.mapWidth)));
 
+        // Print out the array.
+        for(int y = 0; y < this.mapHeight; y += 1) {
+
+            // Print out the spacer.
+            if(y > 0) {
+                System.out.println(spacer);
+            }
+
+            for (int x = 0; x < this.mapWidth; x += 1) {
+                if(x > 0){
+                    System.out.print("-");
+                }
+                if(generatedMap[y][x] == -10) {
+                    System.out.print(" x ");
+                }else{
+                    System.out.print(String.format("%03d", generatedMap[y][x]));
+                }
             }
             System.out.print("\n");
         }

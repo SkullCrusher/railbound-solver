@@ -1,49 +1,36 @@
 {
-  "mapX": 7,
+  "mapX": 6,
   "mapY": 7,
-  "availableTrack": 15,
+  "availableTrack": 9,
   "carts": [
     {
       "direction": 0,
-      "trainNumber": 3,
-      "x": 0,
-      "y": 1
-    },
-    {
-      "direction": 2,
       "trainNumber": 1,
-      "x": 6,
+      "x": 1,
       "y": 1
     },
     {
       "direction": 0,
       "trainNumber": 2,
-      "x": 0,
+      "x": 1,
+      "y": 3
+    },
+    {
+      "direction": 0,
+      "trainNumber": 3,
+      "x": 1,
       "y": 5
     }
   ],
   "track": [
     {
       "variation": 1,
-      "x": 0,
-      "y": 1,
-      "isExit": false
-    },
-    {
-      "variation": 1,
-      "x": 0,
-      "y": 5,
-      "isExit": false
-    },
-	
-    {
-      "variation": 1,
       "x": 1,
       "y": 1,
       "isExit": false
     },
     {
-      "variation": 2,
+      "variation": 1,
       "x": 1,
       "y": 3,
       "isExit": false
@@ -55,73 +42,80 @@
       "isExit": false
     },
 	
-    {
+	{
+      "variation": 10,
+      "x": 2,
+      "y": 1,
+      "isExit": false
+    },
+	{
+      "variation": 2,
+      "x": 2,
+      "y": 2,
+      "isExit": false
+    },
+	{
+      "variation": 14,
+      "x": 2,
+      "y": 3,
+      "isExit": false
+    },
+	{
+      "variation": 2,
+      "x": 2,
+      "y": 4,
+      "isExit": false
+    },
+	{
       "variation": 3,
       "x": 2,
-      "y": 2,
+      "y": 5,
       "isExit": false
     },
+	
     {
       "variation": 5,
-      "x": 2,
-      "y": 4,
+      "x": 3,
+      "y": 1,
       "isExit": false
     },
-	
     {
       "variation": 2,
+      "x": 3,
+      "y": 2,
+      "isExit": false
+    },
+	{
+      "variation": 4,
       "x": 3,
       "y": 3,
       "isExit": false
     },
-    {
-      "variation": 2,
-      "x": 3,
-      "y": 5,
+	
+	{
+      "variation": 1,
+      "x": 4,
+      "y": 3,
       "isExit": false
     },
-	
+
     {
-      "variation": 4,
+      "variation": 16,
       "x": 4,
       "y": 2,
       "isExit": false
     },
     {
-      "variation": 6,
+      "variation": 16,
       "x": 4,
       "y": 4,
       "isExit": false
     },
-	
+
     {
       "variation": 1,
-      "x": 5,
-      "y": 1,
-      "isExit": false
-    },
-    {
-      "variation": 2,
       "x": 5,
       "y": 3,
-      "isExit": false
-    },
-    {
-      "variation": 1,
-      "x": 5,
-      "y": 5,
-      "isExit": false
-    },
-    {
-      "variation": 1,
-      "x": 6,
-      "y": 1,
-      "isExit": false
-    },
-    {
-      "variation": 1,
-      "x": 6,
-      "y": 5,
       "isExit": true
     }
   ]
