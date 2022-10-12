@@ -100,7 +100,7 @@ public class DFSSolver implements Solver {
             }
 
             // Look up the next move first to make SURE that the cart could actually do that move.
-            MovementItem newMove = currentTrack.CalcNextPosition(direction);
+            MovementItem newMove = currentTrack.CalcNextPosition(direction, this.Sim.tiles, this.Sim.tunnels);
 
             // If there is NO next move, do nothing.
             if(newMove == null){
@@ -136,8 +136,7 @@ public class DFSSolver implements Solver {
         for(int i = 1; i <= typeOfTrackPieces; i += 1) {
 
             // Simulate the child
-
-            Tile newTile = new Tile(pos, i, false);
+            Tile newTile = new Tile(pos, i, false, 0, 0);
 
             // Prevent placing a tile that is impossible to place in the game.
             if(!newTile.isValidTilePlacement(this.Sim.getMapWidth(), this.Sim.getMapHeight())){
@@ -153,7 +152,7 @@ public class DFSSolver implements Solver {
             }
 
             // Move the current cart.
-            MovementItem newMove = newTile.CalcNextPosition(direction);
+            MovementItem newMove = newTile.CalcNextPosition(direction, this.Sim.tiles, this.Sim.tunnels);
 
             // If there is a possible move.
             if (newMove != null) {

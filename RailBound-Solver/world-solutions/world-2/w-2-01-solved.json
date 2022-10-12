@@ -17,15 +17,31 @@
       "y": 3,
       "isExit": false
     },
+    {
+      "variation": 1,
+      "x": 1,
+      "y": 3,
+      "isExit": false
+    },
+    {
+      "variation": 1,
+      "x": 2,
+      "y": 3,
+      "isExit": false
+    },
 
     {
       "variation": 19,
+      "tunnelConnectNum": 1,
+      "tunnelConnectExit": 2,
       "x": 3,
       "y": 0,
       "isExit": false
     },
     {
       "variation": 17,
+      "tunnelConnectNum": 2,
+      "tunnelConnectExit": 1,
       "x": 3,
       "y": 3,
       "isExit": false
@@ -34,6 +50,18 @@
     {
       "variation": 1,
       "x": 4,
+      "y": 0,
+      "isExit": false
+    },
+    {
+      "variation": 1,
+      "x": 5,
+      "y": 0,
+      "isExit": false
+    },
+    {
+      "variation": 1,
+      "x": 6,
       "y": 0,
       "isExit": true
     }

@@ -33,13 +33,16 @@ public class Simulation {
     public Point endPosition = new Point(-1, -1);
 
     // Contains the map tiles that can be used for the simulation.
-    HashMap<Point, Tile> tiles = new HashMap<>();
+    public HashMap<Point, Tile> tiles = new HashMap<>();
 
     // Entities
     Entity[] entities = new Entity[0];
 
+    // Maps the tunnel number to a tile location.
+    public HashMap<Integer, Point> tunnels = new HashMap<>();
+
     // Hooks are a number that ticks on each even, based on that tiles will know their state.
-    HashMap<Integer, Integer> hooks = new HashMap<>();
+    public HashMap<Integer, Integer> hooks = new HashMap<>();
 
     // Reset the objects to prevent issues :/
     void clearClass(){
@@ -99,8 +102,13 @@ public class Simulation {
             // The location the tile is on the map.
             Point location = new Point(config.track[i].x, config.track[i].y);
 
+            // If it's a tunnel, map it into our list for quick lookups.
+            if(config.track[i].tunnelConnectNum > 0){
+                this.tunnels.put(config.track[i].tunnelConnectNum, location);
+            }
+
             // Generate a new track.
-            Tile newTrack = new Tile(location, config.track[i].variation, config.track[i].isExit);
+            Tile newTrack = new Tile(location, config.track[i].variation, config.track[i].isExit, config.track[i].tunnelConnectNum, config.track[i].tunnelConnectExit);
 
             // If it's the exit, remember it.
             if(config.track[i].isExit){
@@ -146,7 +154,7 @@ public class Simulation {
 
             // Move each entity based on its tile.
             for(Entity entity : this.entities){
-                int result = entity.doNextMove(this.tiles, this.entities);
+                int result = entity.doNextMove(this.tiles, this.tunnels);
 
                 // Invalid or error.
                 if(result == -1){

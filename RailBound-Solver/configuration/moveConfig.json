@@ -210,7 +210,55 @@
 			}
 		},
 		15: {},
-		16: {}
+		16: {},
+		17: {
+			0: {
+				"x": 0,
+				"y": 0,
+				"direction": 0
+			},
+			2: {
+				"x": -1,
+				"y": 0,
+				"direction": 2
+			}
+		},
+		18: {
+			1: {
+				"x": 0,
+				"y": 0,
+				"direction": 0
+			},
+			3: {
+				"x": 0,
+				"y": -1,
+				"direction": 3
+			}
+		},
+		19: {
+			0: {
+				"x": 1,
+				"y": 0,
+				"direction": 0
+			},
+			2: {
+				"x": 0,
+				"y": 0,
+				"direction": 0
+			}
+		},
+		20: {
+			3: {
+				"x": 0,
+				"y": 0,
+				"direction": 0
+			},
+			1: {
+				"x": 0,
+				"y": 1,
+				"direction": 1
+			}
+		}
 	},
 	"notes2": "The list of tiles that CANNOT be placed at each edge because the game stops you.",
 	"rightBlacklist": {

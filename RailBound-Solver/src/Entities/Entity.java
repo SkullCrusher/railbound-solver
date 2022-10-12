@@ -39,7 +39,7 @@ public class Entity {
     }
 
     // Do the next move for the entity.
-    public int doNextMove(HashMap<Point, Tile> tiles, Entity[] entities) throws IOException {
+    public int doNextMove(HashMap<Point, Tile> tiles, HashMap<Integer, Point> tunnels) throws IOException {
 
         // Stop processing if it got to the exit.
         if(this.completed) {
@@ -48,9 +48,6 @@ public class Entity {
 
         // System.out.println(tiles);
         Tile currentTile = tiles.get(this.pos);
-
-        // System.out.println(currentTile);
-        // System.out.println(this.direction);
 
         // If we moved off the tiles, it's an invalid solution.
         if(currentTile == null){
@@ -68,9 +65,7 @@ public class Entity {
         }
 
         // Get the next move for that entity based on the direction.
-        MovementItem nextMove = currentTile.CalcNextPosition(this.direction);
-
-        // System.out.println(nextMove);
+        MovementItem nextMove = currentTile.CalcNextPosition(this.direction, tiles, tunnels);
 
         // If the next move was found, apply it to the cart.
         if(nextMove == null){

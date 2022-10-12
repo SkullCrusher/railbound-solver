@@ -12,6 +12,9 @@ public class Main {
     // The levels from world 1.
     static String [] world1 = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "11a", "11b", "12", "12a", "13", "13a", "14", "14a", "15", "15a"};
 
+    static String [] world2 = {"01"};
+
+
     static void solve(String filename, String path, String outputPath) throws IOException {
 
         // Create a new solver.
@@ -67,7 +70,7 @@ public class Main {
 
         // World 2.
 
-        //solve("w-1-08.json", "./world-problems/world-1/w-1-08.json");
+        // solve("w-2-08.json", "./world-problems/world-1/w-1-08.json");
 
         // World 1.
 
@@ -100,6 +103,34 @@ public class Main {
 
             if(!result){
                 System.out.println(currentSimulation.printMap());
+            }
+
+            Assert.assertTrue(result);
+        }
+    }
+    @Test
+    public void world2Test() throws IOException {
+        String basePath = "./world-solutions/world-2/";
+
+        // Simulation the known solutions for world 1.
+        for (String s : world2) {
+            Simulation currentSimulation = new Simulation();
+
+            String filename = "w-2-" + s + "-solved.json";
+
+            // Load the configuration that is already solved.
+            currentSimulation.loadFile(basePath + filename);
+
+            // Run the simulation.
+            boolean result = currentSimulation.run();
+
+            // Run the simulation and verify it was successful.
+            System.out.println("Simulation result on '" + filename + "' - " + result);
+
+            if(!result){
+                System.out.println(currentSimulation.printMap());
+
+                currentSimulation.printMapWithCarts();
             }
 
             Assert.assertTrue(result);
