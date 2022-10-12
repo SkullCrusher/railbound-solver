@@ -45,7 +45,7 @@ public class Simulation {
     public HashMap<Integer, Integer> hooks = new HashMap<>();
 
     // Reset the objects to prevent issues :/
-    void clearClass(){
+    public void clearClass(){
         this.tickCount = 0;
         this.tickLimit = 50;
         this.mapWidth = 0;
@@ -57,6 +57,7 @@ public class Simulation {
         this.tiles = new HashMap<>();
         this.entities = new Entity[0];
         this.hooks = new HashMap<>();
+        this.tunnels = new HashMap<>();
     }
 
     boolean loadFile(String filename) throws IOException {

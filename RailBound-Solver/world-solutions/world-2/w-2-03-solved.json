@@ -1,0 +1,113 @@
+{
+  "mapX": 5,
+  "mapY": 5,
+  "availableTrack": 0,
+  "carts": [
+    {
+      "direction": 2,
+      "trainNumber": 1,
+      "x": 4,
+      "y": 2
+    },
+    {
+      "direction": 2,
+      "trainNumber": 2,
+      "x": 4,
+      "y": 4
+    }
+  ],
+  "track": [
+    {
+      "variation": 19,
+      "tunnelConnectNum": 1,
+      "tunnelConnectExit": 2,
+      "x": 0,
+      "y": 0,
+      "isExit": false
+    },
+    {
+      "variation": 19,
+      "tunnelConnectNum": 2,
+      "tunnelConnectExit": 1,
+      "x": 0,
+      "y": 3,
+      "isExit": false
+    },
+
+    {
+      "variation": 1,
+      "x": 1,
+      "y": 0,
+      "isExit": false
+    },
+    {
+      "variation": 6,
+      "x": 1,
+      "y": 2,
+      "isExit": false
+    },
+    {
+      "variation": 3,
+      "x": 1,
+      "y": 3,
+      "isExit": false
+    },
+
+    {
+      "variation": 1,
+      "x": 2,
+      "y": 0,
+      "isExit": false
+    },
+    {
+      "variation": 1,
+      "x": 2,
+      "y": 2,
+      "isExit": false
+    },
+
+    {
+      "variation": 1,
+      "x": 3,
+      "y": 0,
+      "isExit": false
+    },
+    {
+      "variation": 9,
+      "x": 3,
+      "y": 2,
+      "isExit": false
+    },
+    {
+      "variation": 2,
+      "x": 3,
+      "y": 3,
+      "isExit": false
+    },
+    {
+      "variation": 4,
+      "x": 3,
+      "y": 4,
+      "isExit": false
+    },
+
+    {
+      "variation": 1,
+      "x": 4,
+      "y": 0,
+      "isExit": true
+    },
+    {
+      "variation": 1,
+      "x": 4,
+      "y": 2,
+      "isExit": false
+    },
+    {
+      "variation": 1,
+      "x": 4,
+      "y": 4,
+      "isExit": false
+    }
+  ]
+}
